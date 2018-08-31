@@ -32,7 +32,6 @@ class Timer extends React.Component{
   }
   
   countdown() {
-    // console.log(this.state.timer)
     if(this.state.timer > 0){
       this.setState({ timer: this.state.timer -1 });
     }else if(this.state.timer === 0){
@@ -242,6 +241,7 @@ class ShowQuiz extends React.Component{
         </div>
         <DragDropContainer>
         <img src="./circle.png" id="circle" alt="circle" draggable="true"></img>
+        <div id="instructions">黒い円を正解にドラッグ！<br />Drag the circle to the correct answer!</div>
         </DragDropContainer>
         <div className="container-fluid">
           <div className="row">
@@ -280,7 +280,6 @@ class ShowQuiz extends React.Component{
             </div>
           </div>
        </div>
-       
       </div>
       )
   }
