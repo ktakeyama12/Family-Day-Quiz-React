@@ -1,0 +1,94 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+class Title extends React.Component{
+  render(){
+    return(
+        <div className="title">
+          Title page
+          <button onClick={() => this.props.nextPhase()}>
+            はじめる
+          </button>
+        </div>
+      )
+  }
+}
+
+class Timer extends React.Component{
+  render(){
+    return(
+      <div className="timer">
+        {this.props.timer}
+      </div>
+      )
+  }
+}
+
+class Quiz extends React.Component{
+  constructor(props){
+    super(props)
+    this.state = {
+      quizNumber : 1,
+      timer : 10
+    }
+    this.countdown = this.countdown.bind(this)
+  }
+  
+  countdown() {
+    if(this.state.timer > 0){
+      this.setState({ timer: this.state.timer -1 });
+    }
+  }
+  
+  starttimer(){
+     setTimeout(this.countdown, 1000);
+  }
+  
+  render(){
+    return(
+      <div className="game">
+        Game page
+        {this.starttimer()}
+        <Timer 
+          timer = {this.state.timer}
+        />
+      </div>
+      )
+  }
+}
+
+class Game extends React.Component {
+  constructor(props){
+    super(props)
+    this.nextPhase = this.nextPhase.bind(this)
+    this.state = {
+      gamePhase : 1
+    }
+  }
+  
+  nextPhase(){
+    this.setState({
+      gamePhase : this.state.gamePhase + 1
+    })
+  }
+  
+  render(){
+    let gameScreen;
+    if(this.state.gamePhase === 1){
+      gameScreen = <Title nextPhase={this.nextPhase}/>
+    }else{
+      gameScreen = <Quiz />
+    }
+    
+    return(
+        <div className="game">
+          {gameScreen}
+        </div>
+      )
+  }
+}
+
+ReactDOM.render(
+  <Game />,
+  document.getElementById('root')
+);
