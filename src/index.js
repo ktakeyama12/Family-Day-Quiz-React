@@ -241,8 +241,9 @@ class ShowQuiz extends React.Component{
         </div>
         <DragDropContainer>
         <img src="./circle.png" id="circle" alt="circle" draggable="true"></img>
-        <div id="instructions">黒い円を正解にドラッグ！<br />Drag the circle to the correct answer!</div>
         </DragDropContainer>
+        <div id="instructions">黒い円を正解にドラッグ！<br />Drag the circle to the correct answer!</div>
+        
         <div className="container-fluid">
           <div className="row">
           
