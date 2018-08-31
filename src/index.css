@@ -218,11 +218,20 @@ h1{
     transform: translate(-50%, -50%); 
 }
 
-#instructions{
-    text-align: center;
-    font-size:25px;
+/*#instructions{*/
+/*    text-align: center;*/
+/*    font-size:25px;*/
         /*position: absolute;*/
+/*    left: 50%;*/
+/*    top: 10%;*/
+/*    transform: translate(140%,850%);*/
+/*}*/
+
+#instructions{
+        text-align: center;
+    font-size:25px;
+        position: absolute;
     left: 50%;
-    top: 10%;
-    transform: translate(140%,850%);
+    top: 94%;
+    transform: translate(-50%,-50%);
 }
