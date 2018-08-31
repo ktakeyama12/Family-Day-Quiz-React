@@ -26,6 +26,32 @@
     text-align: center;
 }
 
+#scoreShow{
+    /*top: 10%;*/
+    /*-webkit-transform: translateY(-50%);*/
+    /*-ms-transform: translateY(-50%);*/
+    /*transform: translateY(-172%);*/
+    text-align: center;
+    font-size:25px;
+        position: absolute;
+    left: 50%;
+    top: 55%;
+    transform: translate(-50%,-50%);
+}
+
+.timer{
+    /*top: 10%;*/
+    /*-webkit-transform: translateY(-50%);*/
+    /*-ms-transform: translateY(-50%);*/
+    /*transform: translateY(-172%);*/
+    text-align: center;
+    font-size:25px;
+        position: absolute;
+    left: 50%;
+    top: 5%;
+    transform: translate(-50%,-50%);
+}
+
 #quizData{
     /*top: 10%;*/
     /*-webkit-transform: translateY(-50%);*/
@@ -182,4 +208,8 @@ h1{
 #circle{
     width : 100px;
     height: 100px;
+    position: absolute;
+    left: 50%;
+    top: 5%;
+    transform: translate(-50%,-50%);
 }

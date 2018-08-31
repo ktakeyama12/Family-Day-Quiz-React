@@ -10,7 +10,10 @@ class Title extends React.Component{
     return(
         <div className="title">
           <button onClick={() => this.props.nextPhase()}>
-            はじめる
+            日本語
+          </button>
+          <button onClick={() => this.props.nextPhaseEnglish()}>
+            English
           </button>
         </div>
       )
@@ -34,7 +37,7 @@ class Timer extends React.Component{
       this.setState({ timer: this.state.timer -1 });
     }else if(this.state.timer === 0){
       this.props.nextQuiz();
-      this.setState({ timer: this.state.timer + 10})
+      this.setState({ timer: 10})
     }
   }
   
@@ -61,63 +64,121 @@ class Timer extends React.Component{
 class ShowQuiz extends React.Component{
   constructor(props){
     super(props);
-
-    this.answerData = [
-      "水のペットボトル",
-      "1997",
-      "渋谷",
-      "29",
-      "53",
-      "12億"
-      ]
-    this.quizData = [
-      "楽天市場で最も売れた商品（2018上半期）",
-      "楽天市場ができた年はいつでしょう。",
-      "今までで楽天本社が移転していない場所",
-      "楽天が展開している国の数は？",
-      "楽天の社長、三木谷浩史の年齢は？",
-      "楽天グループサービスの利用者数は？",
-    ];
-    this.answerCorrect = [
-      "4",
-      "3",
-      "4",
-      "4",
-      "3",
-      "2"
+    if(this.props.english === 0){
+      this.answerData = [
+        "水のペットボトル",
+        "1997",
+        "1兆ポイント以上",
+        "29",
+        "53",
+        "12億"
+        ]
+      this.quizData = [
+        "楽天市場で最も売れた商品（2018上半期）",
+        "楽天市場ができた年はいつでしょう。",
+        "楽天ポイントの総発行数はいくつ？",
+        "楽天が展開している国の数は？",
+        "楽天の社長、三木谷浩史の年齢は？",
+        "楽天グループサービスの利用者数は？",
       ];
-    this.answerData1 = [
-      "パソコン",
-      "1977年",
-      "二子玉川",
-      "5",
-      "35",
-      "1億"
-    ];
-    this.answerData2 = [
-      "トイレットペーパー",
-      "1987年",
-      "品川",
-      "12",
-      "43",
-      "12億",
-    ];
-    this.answerData3 = [
-      "鉛筆",
-      "1997年",
-      "六本木",
-      "20",
-      "53",
-      "50億"
-    ];
-    this.answerData4 = [
-      "水のペットボトル",
-      "2007年",
-      "渋谷",
-      "29",
-      "60",
-      "100億"
-    ];
+      this.answerCorrect = [
+        "4",
+        "3",
+        "2",
+        "4",
+        "3",
+        "2"
+        ];
+      this.answerData1 = [
+        "パソコン",
+        "1977年",
+        "10兆ポイント以上",
+        "5",
+        "35",
+        "1億"
+      ];
+      this.answerData2 = [
+        "トイレットペーパー",
+        "1987年",
+        "1兆ポイント以上",
+        "12",
+        "43",
+        "12億",
+      ];
+      this.answerData3 = [
+        "鉛筆",
+        "1997年",
+        "8000億ポイント以上",
+        "20",
+        "53",
+        "50億"
+      ];
+      this.answerData4 = [
+        "水のペットボトル",
+        "2007年",
+        "5000憶ポイント以上",
+        "29",
+        "60",
+        "100億"
+      ];
+    }else{
+      this.answerData = [
+        "more than 1 trillion",
+        "1997",
+        "Bottles of water上",
+        "29",
+        "53",
+        "12億"
+        ]
+      this.quizData = [
+        "How many Rakuten points have been issued so far?",
+        "When did Rakuten Ichiba start?",
+        "What was the most purchased product in 2018?",
+        "How many countries does Rakuten have its services?",
+        "How old is Hiroshi Mikitani, who is a CEO of Rakuten?",
+        "How many people use Rakuten group services worldwide?",
+      ];
+      this.answerCorrect = [
+        "2",
+        "3",
+        "4",
+        "4",
+        "3",
+        "2"
+        ];
+      this.answerData1 = [
+        "more than 10 trillion",
+        "1977",
+        "Laptop",
+        "5",
+        "35",
+        "1 billion"
+      ];
+      this.answerData2 = [
+        "more than 1 trillion",
+        "1987",
+        "Toilet Paper",
+        "12",
+        "43",
+        "12 billion",
+      ];
+      this.answerData3 = [
+        "more than 8000 billion",
+        "1997",
+        "Pencils",
+        "20",
+        "53",
+        "72 billion"
+      ];
+      this.answerData4 = [
+        "more than 5000 billion",
+        "2007",
+        "Bottles of Water",
+        "29",
+        "60",
+        "700 billion"
+      ];
+    }
   }
   
   showQuestion(qNumber){
@@ -142,11 +203,19 @@ class ShowQuiz extends React.Component{
   
   checkAnswer(field){
     if(field === this.answerCorrect[this.props.qNumber]){
-      alert("正解！クリックで次へ");
+      if(this.props.english === 0){
+        alert("正解！クリックで次へ");
+      }else{
+        alert("Correct! Click OK to continue")
+      }
       this.props.addPoint();
     }else{
       var a = this.answerData[this.props.qNumber];
-      alert("不正解。正解は" + a + "でした");
+      if(this.props.english === 0){
+        alert("不正解。正解は" + a + "でした");
+      }else{
+        alert("Incorrect. The answer was" + a)
+      }
     }
     this.props.nextQuiz();
 
@@ -167,13 +236,8 @@ class ShowQuiz extends React.Component{
       };
     return(
       <div className="showquiz">
-        question number:
-        {this.props.qNumber}
-        <button onClick={() => this.props.nextQuiz()}>
-          次の問題
-        </button>
-        <br />
         <div id="quizData">
+        Q.{this.props.qNumber + 1}　
           {this.showQuestion(this.props.qNumber)}
         </div>
         <DragDropContainer>
@@ -254,9 +318,10 @@ class Quiz extends React.Component{
   render(){
     return(
       <div className="game">
-        Game page
-        Score:
+      <div id="scoreShow">
+        Score　:　
         {this.state.score}
+        </div>
         <Timer
           nextQuiz = {this.nextQuiz}
           ref={this.child}
@@ -265,6 +330,7 @@ class Quiz extends React.Component{
           qNumber={this.state.qNumber}
           nextQuiz={this.nextQuiz}
           addPoint={this.addPoint}
+          english={this.props.english}
         />
         Qnumber{this.state.qNumber}
       </div>
@@ -276,7 +342,7 @@ class Score extends React.Component{
   render(){
     return(
         <div className="score">
-              <div id="finalscore1">おわりあなたのスコアは：</div>
+              <div id="finalscore1">Score :</div>
               <div id="finalscore">{this.props.score}</div>
         </div>
       )
@@ -284,19 +350,32 @@ class Score extends React.Component{
 }
 
 class Game extends React.Component {
+  componentDidMount(){
+    document.title = "Family Day Quiz"
+  }
   constructor(props){
     super(props);
     this.nextPhase = this.nextPhase.bind(this);
+    this.nextPhaseEnglish = this.nextPhaseEnglish.bind(this);
     this.setScore = this.setScore.bind(this);
     this.state = {
       gamePhase : 1,
-      finalscore : 0
+      finalscore : 0,
+      english : 0
     };
   }
   
   nextPhase(){
     this.setState({
-      gamePhase : this.state.gamePhase + 1
+      gamePhase : this.state.gamePhase + 1,
+      english : 0
+    })
+  }
+  
+  nextPhaseEnglish(){
+    this.setState({
+       gamePhase : this.state.gamePhase + 1,
+      english : 1
     })
   }
   
@@ -307,11 +386,15 @@ class Game extends React.Component {
   render(){
     let gameScreen;
     if(this.state.gamePhase === 1){
-      gameScreen = <Title nextPhase={this.nextPhase}/>
+      gameScreen = <Title
+      nextPhase={this.nextPhase}
+      nextPhaseEnglish={this.nextPhaseEnglish}
+      />
     }else if(this.state.gamePhase === 2){
       gameScreen = <Quiz
       setScore={this.setScore}
       nextPhase={this.nextPhase}
+      english={this.state.english}
       />
     }else{
       gameScreen = <Score
