@@ -90,18 +90,18 @@ class ShowQuiz extends React.Component{
         ];
       this.answerData1 = [
         "パソコン",
-        "1977年",
+        "1987年",
         "10兆ポイント以上",
         "5",
-        "35",
-        "1億"
+        "48",
+        "10億"
       ];
       this.answerData2 = [
         "トイレットペーパー",
-        "1987年",
+        "1990年",
         "1兆ポイント以上",
         "12",
-        "43",
+        "50",
         "12億",
       ];
       this.answerData3 = [
@@ -110,15 +110,15 @@ class ShowQuiz extends React.Component{
         "8000億ポイント以上",
         "20",
         "53",
-        "50億"
+        "16億"
       ];
       this.answerData4 = [
         "水のペットボトル",
-        "2007年",
+        "2000年",
         "5000憶ポイント以上",
         "29",
-        "60",
-        "100億"
+        "57",
+        "23億"
       ];
     }else{
       this.answerData = [
