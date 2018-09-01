@@ -98,7 +98,7 @@ class ShowQuiz extends React.Component{
       ];
       this.answerData2 = [
         "トイレットペーパー",
-        "1990年",
+        "1992年",
         "1兆ポイント以上",
         "12",
         "50",
